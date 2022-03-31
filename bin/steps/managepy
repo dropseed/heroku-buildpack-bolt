@@ -5,5 +5,6 @@ set -e
 # If manage.py doesn't exist yet, copy one in so the
 # default Heroku collectstatic flows will work like expected.
 if [ ! -f "$BUILD_DIR/app/manage.py" ]; then
+    echo "-----> Copying manage.py to $BUILD_DIR/app/manage.py"
     cp $BIN_DIR/files/manage.py "$BUILD_DIR/app/manage.py"
 fi
