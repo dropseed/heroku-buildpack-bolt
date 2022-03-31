@@ -11,5 +11,10 @@ echo "-----> Install heroku-buildpack-forge"
 BUILD_DIR="$1"
 ENV_DIR="$3"
 
-./steps/forge-pro-private-key "$ENV_DIR"
-./steps/managepy "$BUILD_DIR"
+# Setup Path variables, for later use in the Buildpack.
+BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
+
+export BUILD_DIR ENV_DIR BIN_DIR
+
+source "$BIN_DIR/steps/forge-pro-private-key"
+source "$BIN_DIR/steps/managepy"

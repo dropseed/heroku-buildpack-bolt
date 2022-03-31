@@ -6,8 +6,6 @@ indent() {
   sed -u 's/^/       /'
 }
 
-ENV_DIR=$1
-
 # adapted from SectorLabs/heroku-buildpack-git-submodule
 FORGE_PRO_PRIVATE_KEY=$(<"$ENV_DIR/FORGE_PRO_PRIVATE_KEY")
 
