@@ -8,5 +8,6 @@ set -e
 # This works because the Python buildpack looks for bin/pre_compile and bin/post_compile.
 if [ ! -f "$BUILD_DIR/bin/post_compile" ]; then
     echo "-----> Copying post_compile to $BUILD_DIR/bin/post_compile"
+    mkdir -p "$BUILD_DIR/bin"
     cp $BIN_DIR/files/post_compile "$BUILD_DIR/bin/post_compile"
 fi
