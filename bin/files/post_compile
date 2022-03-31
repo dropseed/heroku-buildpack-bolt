@@ -1,0 +1,2 @@
+#!/bin/bash -e
+npm run build || echo "Failed to run \`npm run build\` in post_compile"

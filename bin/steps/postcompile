@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+# Create a custom bin/post_compile that will
+# re-compile Tailwind AFTER the Python dependencies have been installed,
+# so that the Forge templates in packages can be included in the compilation.
+# This works because the Python buildpack looks for bin/pre_compile and bin/post_compile.
+if [ ! -f "$BUILD_DIR/bin/post_compile" ]; then
+    echo "-----> Copying post_compile to $BUILD_DIR/bin/post_compile"
+    cp $BIN_DIR/files/post_compile "$BUILD_DIR/bin/post_compile"
+fi
