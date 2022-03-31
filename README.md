@@ -1,25 +1,21 @@
-heroku-buildpack-ssh-key
-====
+# heroku-buildpack-forge
 
-Add an ssh key to your build.
+- Installs a `FORGE_PRO_PRIVATE_KEY` if found in the environment.
+- Creates an `app/manage.py` file if there isn't one (so Heroku collectstatic works like usual)
 
-Adapted from [SectorLabs/heroku-buildpack-git-submodule](https://github.com/SectorLabs/heroku-buildpack-git-submodule).
+Forked and modified from [heroku/heroku-buildpack-ssh-key](https://github.com/heroku/heroku-buildpack-ssh-key).
+
 
 ## Usage
 
-1. Add the buildpack to your Heroku app:
+Install the buildpack:
 
-    ```
-    $ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-ssh-key.git -i 1
-    ```
+```sh
+heroku buildpacks:add https://github.com/django-forge/heroku-buildpack-forge.git --index 1
+```
 
-    Keep in mind that the buildpack order is important. If you'll specify this buildpack after your default one (e.g. `heroku/nodejs`) it'll not work. See [https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app](https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app) for details.
+Add a `FORGE_PRO_PRIVATE_KEY` (optional):
 
-2. Set `BUILDPACK_SSH_KEY` to the private SSH key you want added:
-
-    ```
-    $ heroku config:set BUILDPACK_SSH_KEY="$(cat ~/.ssh/id_rsa)"
-    ```
-
-The buildpack will save the SSH key to your build at `~/.ssh/id_rsa`.
-
+```sh
+heroku config:set FORGE_PRO_PRIVATE_KEY="$(cat forge_pro_private_key)"
+```

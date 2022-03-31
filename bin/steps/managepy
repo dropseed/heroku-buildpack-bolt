@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+BUILD_DIR="$1"
+
+# If manage.py doesn't exist yet, copy one in so the
+# default Heroku collectstatic flows will work like expected.
+if [ ! -f "$BUILD_DIR/app/manage.py" ]; then
+    cp ../files/app/manage.py "$BUILD_DIR/app/manage.py"
+fi

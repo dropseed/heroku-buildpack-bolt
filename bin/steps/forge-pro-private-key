@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+ENV_DIR=$1
+
+# adapted from SectorLabs/heroku-buildpack-git-submodule
+FORGE_PRO_PRIVATE_KEY=$(<"$ENV_DIR/FORGE_PRO_PRIVATE_KEY")
+
+if [[ -z $FORGE_PRO_PRIVATE_KEY ]]; then
+    echo "FORGE_PRO_PRIVATE_KEY not found" | indent
+    exit 0
+fi
+
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+
+# ignore/hide ssh warnings
+echo "Host *" >> ~/.ssh/config
+echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+echo "   UserKnownHostsFile /dev/null" >> ~/.ssh/config
+echo "   LogLevel ERROR" >> ~/.ssh/config
+echo "-----> Installed SSH key from FORGE_PRO_PRIVATE_KEY"
+
+# install the ssh key
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2> /dev/null
+cat "$ENV_DIR/FORGE_PRO_PRIVATE_KEY" > ~/.ssh/id_rsa
+echo >> ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
