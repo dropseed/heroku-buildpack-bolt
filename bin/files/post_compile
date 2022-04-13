@@ -1,5 +1,6 @@
 #!/bin/bash -e
-npm run build || echo "Failed to run \`npm run build\` in post_compile"
+# Compile our Tailwind CSS (including templates in forge/forge-pro)
+forge tailwind compile --minify
 
 # Run the Python buildpack collecstatic line again...
 # (variables should be available in this context)
