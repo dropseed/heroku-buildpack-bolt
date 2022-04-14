@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "heroku-buildpack-forge"
+echo "Forge"
 exit 0
