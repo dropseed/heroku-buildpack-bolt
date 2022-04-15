@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+# Insert a default Procfile if there isn't one
+if [ ! -f "$BUILD_DIR/Procfile" ]; then
+    echo "-----> Copying default Procfile to $BUILD_DIR/Procfile"
+    cp $BIN_DIR/files/Procfile "$BUILD_DIR/Procfile"
+fi
