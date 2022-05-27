@@ -8,25 +8,20 @@ indent() {
 
 if [ ! -f "$ENV_DIR/FORGE_PRO_PRIVATE_KEY" ]; then
   echo "FORGE_PRO_PRIVATE_KEY not found" | indent
-  exit 0
+else
+  mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
+
+  # Ignore/hide SSH warnings
+  echo "Host *" >> ~/.ssh/config
+  echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  echo "   UserKnownHostsFile /dev/null" >> ~/.ssh/config
+  echo "   LogLevel ERROR" >> ~/.ssh/config
+  echo "-----> Installed SSH key from FORGE_PRO_PRIVATE_KEY"
+
+  # Install the SSH key
+  ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2> /dev/null
+  cat "$ENV_DIR/FORGE_PRO_PRIVATE_KEY" > ~/.ssh/id_rsa
+  echo >> ~/.ssh/id_rsa
+  chmod 600 ~/.ssh/id_rsa
 fi
-
-
-# adapted from SectorLabs/heroku-buildpack-git-submodule
-FORGE_PRO_PRIVATE_KEY=$(<"$ENV_DIR/FORGE_PRO_PRIVATE_KEY")
-
-mkdir -p ~/.ssh
-chmod 700 ~/.ssh
-
-# ignore/hide ssh warnings
-echo "Host *" >> ~/.ssh/config
-echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-echo "   UserKnownHostsFile /dev/null" >> ~/.ssh/config
-echo "   LogLevel ERROR" >> ~/.ssh/config
-echo "-----> Installed SSH key from FORGE_PRO_PRIVATE_KEY"
-
-# install the ssh key
-ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2> /dev/null
-cat "$ENV_DIR/FORGE_PRO_PRIVATE_KEY" > ~/.ssh/id_rsa
-echo >> ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa
