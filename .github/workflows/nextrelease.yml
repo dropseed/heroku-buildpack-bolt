@@ -11,10 +11,9 @@ jobs:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' && github.head_ref == 'nextrelease' }}
     runs-on: ubuntu-latest
     steps:
-    - run: npm install -g heroku
     - uses: dropseed/nextrelease@v2
       env:
-        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.DROPSEED_PYPI_TOKEN }}
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       with:
         prepare_cmd: |
           sed -i -e "s/version = \"[^\"]*\"$/version = \"$VERSION\"/g" buildpack.toml
