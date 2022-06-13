@@ -1,0 +1,8 @@
+[buildpack]
+id = "forgepackages/forge"
+name = "Forge"
+homepage = "https://github.com/forgepackages/heroku-buildpack-forge"
+version = "0.0.0"
+
+[publish.Ignore]
+files = [".github/"]
