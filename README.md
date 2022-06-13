@@ -13,7 +13,7 @@ Forked and modified from [heroku/heroku-buildpack-ssh-key](https://github.com/he
 Install the buildpack:
 
 ```sh
-heroku buildpacks:add https://github.com/django-forge/heroku-buildpack-forge.git --index 1
+heroku buildpacks:add https://github.com/forgepackages/heroku-buildpack-forge.git --index 1
 ```
 
 Add a `FORGE_PRO_PRIVATE_KEY` (optional):
