@@ -17,6 +17,7 @@ BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
 export BUILD_DIR ENV_DIR BIN_DIR
 
 source "$BIN_DIR/steps/forge-pro-private-key"
+source "$BIN_DIR/steps/forgepackages-pypi"
 source "$BIN_DIR/steps/managepy"
 source "$BIN_DIR/steps/postcompile"
 source "$BIN_DIR/steps/procfile"
