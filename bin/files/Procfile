@@ -1,2 +1,2 @@
-web: forge heroku serve
-release: forge heroku pre-deploy
+web: bolt heroku serve
+release: bolt heroku pre-deploy
