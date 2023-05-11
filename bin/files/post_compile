@@ -1,6 +1,6 @@
 #!/bin/bash -e
-# Compile our Tailwind CSS (including templates in forge/forge-pro)
-forge tailwind compile --minify
+# Compile our Tailwind CSS (including templates in bolt itself)
+bolt tailwind compile --minify
 
 # Run the Python buildpack collecstatic line again...
 # (variables should be available in this context)

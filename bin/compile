@@ -6,7 +6,7 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Install heroku-buildpack-forge"
+echo "-----> Install heroku-buildpack-bolt"
 
 BUILD_DIR="$1"
 ENV_DIR="$3"

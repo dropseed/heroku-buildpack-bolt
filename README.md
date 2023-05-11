@@ -11,7 +11,7 @@
 Install the buildpack:
 
 ```sh
-heroku buildpacks:add forgepackages/forge --index 1
+heroku buildpacks:add https://github.com/dropseed/heroku-buildpack-bolt --index 1
 ```
 
 Add `FORGEPACKAGES_AUTH` (optional):

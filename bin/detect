@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "Forge"
+echo "Bolt"
 exit 0
