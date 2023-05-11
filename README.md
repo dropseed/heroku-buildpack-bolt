@@ -1,4 +1,4 @@
-# heroku-buildpack-forge
+# heroku-buildpack-bolt
 
 - Installs `FORGEPACKAGES_AUTH` for private packages if found in the environment
 - Creates an `app/manage.py` file if there isn't one (so Heroku collectstatic works like usual)
