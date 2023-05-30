@@ -1,8 +1,7 @@
 #!/bin/bash -e
+
 # Compile our Tailwind CSS (including templates in bolt itself)
 bolt tailwind compile --minify
 
-# Run the Python buildpack collecstatic line again...
-# (variables should be available in this context)
-source "$BIN_DIR/utils"
-sub_env "$BIN_DIR/steps/collectstatic"
+# Now collectstatic with the compiled content
+bolt django collectstatic --noinput
